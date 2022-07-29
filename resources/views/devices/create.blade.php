@@ -1,14 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
-@section('title', 'Devices :: Index')
+@section('title', 'Devices :: Create')
 
 @section('content')
-<div class="container-sm" style="background-color:#32323b;color:white">
-    <div class="d-flex justify-content-center">
-        <div class="mb-3 row">
-            <label for="partnumber" class="form-label">Part Number</label>
-            <input type="text" class="form-control" id="partnumber" placeholder="AD9424">
-        </div>
-    </div>
-</div>
+@include('devices.form')
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DeviceRequest;
 use App\Models\Device;
 
 class DeviceController extends Controller
@@ -35,9 +36,13 @@ class DeviceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(DeviceRequest $request)
+    {       
+        Device::create($request->validated());
+
+        $devices = Device::all();
+
+        return view('devices.index', compact('devices'));
     }
 
     /**
@@ -46,9 +51,9 @@ class DeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Device $device)
     {
-        //
+        return view('devices.show', compact('device'));
     }
 
     /**
@@ -57,9 +62,9 @@ class DeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Device $device)
     {
-        //
+        return view('devices.edit', compact('device'));
     }
 
     /**
@@ -71,7 +76,7 @@ class DeviceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return view('devices.edit');
     }
 
     /**
