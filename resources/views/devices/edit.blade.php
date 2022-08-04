@@ -3,5 +3,5 @@
 @section('title', 'Devices :: Edit')
 
 @section('content')
-@include('devices.form', $device)
+@include('devices.form', ['method' => 'PUT', 'action' => route('devices.update', $device)])
 @endsection

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\LibraryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/devices', DeviceController::class);
+Route::resource('/libs', LibraryController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

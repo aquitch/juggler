@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\DeviceRequest;
+use App\Services\LibraryService;
 use App\Models\Device;
 
 class DeviceController extends Controller
@@ -27,7 +29,9 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        return view('devices.create');
+        $libraries = LibraryService::getLibraries();
+
+        return view('devices.create', compact('libraries'));
     }
 
     /**
@@ -38,11 +42,15 @@ class DeviceController extends Controller
      */
     public function store(DeviceRequest $request)
     {       
-        Device::create($request->validated());
+        $model = $request->validated();
+
+        $model['datasheet'] = LibraryService::saveDatasheet($request);
+        
+        Device::create($model);
 
         $devices = Device::all();
 
-        return view('devices.index', compact('devices'));
+        return redirect()->route('devices.index', compact('devices'));
     }
 
     /**
@@ -64,7 +72,9 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        return view('devices.edit', compact('device'));
+        $libraries = LibraryService::getLibraries();
+        
+        return view('devices.edit', compact('device', 'libraries'));
     }
 
     /**
@@ -74,9 +84,13 @@ class DeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        return view('devices.edit');
+    public function update(DeviceRequest $request, Device $device)
+    {      
+        $device->update($request->all());
+        
+        $devices = Device::all();
+
+        return redirect()->route('devices.index', compact('devices'));
     }
 
     /**
@@ -85,8 +99,12 @@ class DeviceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Device $device)
     {
-        //
+        $device->delete();
+
+        $devices = Device::all();
+
+        return redirect()->route('devices.index', compact('devices'));
     }
 }

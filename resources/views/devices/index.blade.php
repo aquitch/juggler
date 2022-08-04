@@ -7,7 +7,7 @@
     <div class="card" style="background-color:#32323b;color:white">
         <div class="card-body">
             <div class="d-flex justify-content-center">
-                <div class="col-6">
+                <div class="col-12">
                     <table class="table table-dark table-striped">
                         <thead>
                           <tr>
@@ -29,10 +29,15 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" class="btn btn-danger">Удалить</button>
-                                        <button type="button" class="btn btn-warning">Редактировать</button>
-                                        <button type="button" class="btn btn-success">Просмотр</button>
-                                      </div>
+                                        <form method="POST" action="{{ route('devices.destroy', $device) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Удалить</button>
+                                            <a href="{{ route('devices.edit', $device->id) }}" class="btn btn-warning">Редактировать</a>
+                                            <a href="{{ route('devices.show', $device->id) }}" class="btn btn-success">Просмотр</a>
+                                            <a href="{{ $device->datasheet }}" class="btn btn-primary">Datasheet</a>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

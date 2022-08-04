@@ -26,6 +26,11 @@ class DeviceRequest extends FormRequest
         return [
             'partnumber' => 'required',
             'manufacturer' => 'required',
+            'sch_lib' => 'required',
+            'sch_ref' => 'required',
+            'pcb_lib' => 'required',
+            'pcb_ref' => 'required',
+            'datasheet' => 'max:5M'
         ];
     }
 }
