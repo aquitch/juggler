@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\LibraryController;
 
 /*
@@ -17,10 +18,15 @@ use App\Http\Controllers\LibraryController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/juggler', function () {
+    return view('juggler.index');
+})->name('juggler');
 
 Route::resource('/devices', DeviceController::class);
 Route::resource('/libs', LibraryController::class);
+Route::resource('/boards', BoardController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

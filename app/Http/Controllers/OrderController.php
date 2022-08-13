@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\LibraryService;
-use App\Http\Requests\LibraryRequest;
 
-class LibraryController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class LibraryController extends Controller
      */
     public function index()
     {
-        $libraries = LibraryService::getLibraries();
-        
-        return view('libs.index', compact('libraries'));
+        //
     }
 
     /**
@@ -36,11 +32,9 @@ class LibraryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LibraryRequest $request)
-    {        
-        $result = LibraryService::saveLibrary($request);
-
-        return redirect()->route('libs.index');
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -83,10 +77,8 @@ class LibraryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($library, Request $request)
+    public function destroy($id)
     {
-        LibraryService::deleteLibrary($library, $request->path);
-        
-        return redirect()->route('libs.index');
+        //
     }
 }

@@ -7,8 +7,8 @@
     <div class="card" style="background-color:#32323b;color:white">
         <div class="card-header" style="background-image: linear-gradient(to right, rgba(0, 50, 150, 0.300), #32323b)">
             <div class="d-flex justify-content-between">
-                <h3>Объекты контроля</h3>
-                <a href="{{ route('devices.create') }}" class="btn btn-primary">Добавить</a>
+                <h3>Тестовые решения</h3>
+                <a href="{{ route('boards.create') }}" class="btn btn-primary">Добавить</a>
             </div>
         </div>
         <div class="card-body">
@@ -18,37 +18,40 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Part Number</th>
-                            <th scope="col">Manufacturer</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">SCH Engineer</th>
+                            <th scope="col">PCB Engineer</th>
                             <th scope="col">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($devices as $device)
+                            @foreach ($boards as $board)
                             <tr>
-                                <th scope="row">{{ $device->id }}</th>
+                                <th scope="row">{{ $board->id }}</th>
                                 <td>
-                                    {{ $device->partnumber }}
+                                    {{ $board->name }}
                                 </td>
                                 <td>
-                                    {{ $device->manufacturer }}
+                                    {{ $board->schEng->name }}
+                                </td>
+                                <td>
+                                    {{ $board->pcbEng->name }}
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <form method="POST" action="{{ route('devices.destroy', $device) }}">
+                                        <form method="POST" action="{{ route('boards.destroy', $board) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Удалить</button>
-                                            <a href="{{ route('devices.edit', $device->id) }}" class="btn btn-warning">Редактировать</a>
-                                            <a href="{{ route('devices.show', $device->id) }}" class="btn btn-success">Просмотр</a>
-                                            <a href="{{ $device->datasheet }}" class="btn btn-primary">Datasheet</a>
+                                            <a href="{{ route('boards.edit', $board->id) }}" class="btn btn-warning">Редактировать</a>
+                                            <a href="{{ route('boards.show', $board->id) }}" class="btn btn-success">Просмотр</a>
                                         </form>
                                     </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                      </table>
                 </div>
             </div>
         </div>
