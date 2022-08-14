@@ -1,5 +1,21 @@
-.dark{
-    background-color:#1a1a1d;
+:root{
+    --bs-night-theme: #1a1a1d;
+    --bs-day-theme: #77a5fc;
+}
+
+.night{
+    background-color: var(--bs-night-theme);
+}
+.day{
+    background-color: var(--bs-day-theme);
+}
+div.night{
+    background-color:#32323b;
+    color: white;
+}
+div.day{
+    background-color: blanchedalmond;
+    color: black;
 }
 input{
     background-color:#32323b;

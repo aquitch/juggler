@@ -1,9 +1,11 @@
-<div class="d-flex justify-content-center" style="background-color:#1a1a1d">
-    <div class="card col-4" style="background-color:#32323b;color:white">
-        <div class="card-body">
-            <div class="self-center">
-                <input type="email" id="floatingInputInvalid" placeholder="name@example.com">   
+<div class="d-flex justify-content-center">
+    <div class="card col-4" id="main">
+        <div class="card-header grad">
+            <div class="d-flex justify-content-between">
+                <h3>{{ isset($device) ? $device->partnumber . ' Редактор' : 'Добавить тестовое решение' }}</h3>
             </div>
+        </div>
+        <div class="card-body">
             <div class="d-flex justify-content-center">
                 <div class="col-12 row">
                     <form method="POST" action={{ $action }} enctype="multipart/form-data">

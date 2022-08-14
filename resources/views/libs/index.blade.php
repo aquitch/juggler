@@ -3,9 +3,9 @@
 @section('title', 'Devices :: Index')
 
 @section('content')
-<div class="d-flex justify-content-center" style="background-color:#1a1a1d">
-    <div class="card col-6" style="background-color:#32323b;color:white">
-        <div class="card-header" style="background-image: linear-gradient(to right, rgba(0, 50, 150, 0.300), #32323b)">
+<div class="d-flex justify-content-center">
+    <div class="card col-6" id="main">
+        <div class="card-header grad">
             <div class="d-flex justify-content-between">
                 <h3>Менеджер библиотек</h3>
             </div>

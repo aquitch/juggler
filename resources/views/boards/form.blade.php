@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-center" style="background-color:#1a1a1d">
-    <div class="card col-4" style="background-color:#32323b;color:white">
+<div class="d-flex justify-content-center">
+    <div class="card col-4" id="main">
         <div class="card-header grad">
             <div class="d-flex justify-content-between">
                 <h3>{{ isset($board) ? $board->name . ' Редактор' : 'Добавить тестовое решение' }}</h3>
