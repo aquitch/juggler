@@ -31,6 +31,5 @@ function switchTheme () {
         document.getElementById('main').classList.remove('night');
         document.querySelector('body').className = 'day';
         localStorage.setItem('theme', 'day');
-        console.log('Second Case ' + document.getElementById('moon').className);
     }
 }

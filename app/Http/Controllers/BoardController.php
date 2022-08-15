@@ -46,12 +46,14 @@ class BoardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {  
         $board = Board::create([
             'sch_eng' => $request->sch_eng, 
             'pcb_eng' => $request->pcb_eng,
-            'name' => UniqueNameService::getUniqueName($request->type),
-            'board_type_id' => $request->type,
+            'name' => UniqueNameService::getUniqueName($request),
+            'board_type_id' => $request->board_type_id,
+            'hardware' => $request->hardware,
+            'software' => $request->software,
         ]);
 
         $board->devices()->attach($request->device);
@@ -98,11 +100,18 @@ class BoardController extends Controller
      */
     public function update(Request $request, Board $board)
     {
-        $board->update($request->all());
-        
-        $boards = Board::all();
+        $board->update([
+            'sch_eng' => $request->sch_eng, 
+            'pcb_eng' => $request->pcb_eng,
+            'name' => UniqueNameService::updateUniqueName($request, $board->load('type')),
+            'board_type_id' => $request->board_type_id,
+            'hardware' => $request->hardware,
+            'software' => $request->software,
+        ]);
 
-        return redirect()->route('boards.index', compact('boards'));
+        $board->devices()->sync($request->device);
+
+        return redirect()->route('boards.index');
     }
 
     /**
@@ -115,8 +124,6 @@ class BoardController extends Controller
     {
         $board->delete();
 
-        $board = Board::all();
-
-        return redirect()->route('boards.index', compact('boards'));
+        return redirect()->route('boards.index');
     }
 }

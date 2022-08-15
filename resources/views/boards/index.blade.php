@@ -29,7 +29,7 @@
                             <tr>
                                 <th scope="row">{{ $board->id }}</th>
                                 <td>
-                                    {{ $board->name }}
+                                    {{ $board->code }}
                                 </td>
                                 <td>
                                     {{ $board->schEng->name }}

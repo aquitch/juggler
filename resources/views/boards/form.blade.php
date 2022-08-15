@@ -2,7 +2,7 @@
     <div class="card col-4" id="main">
         <div class="card-header grad">
             <div class="d-flex justify-content-between">
-                <h3>{{ isset($board) ? $board->name . ' Редактор' : 'Добавить тестовое решение' }}</h3>
+                <h3>{{ isset($board) ? $board->code . ' Редактор' : 'Добавить тестовое решение' }}</h3>
             </div>
         </div>
         <div class="card-body">
@@ -13,9 +13,9 @@
                     @if (isset($board))
                         @foreach ($board->devices as $onBoard)
                             <label for="device" class="form-label">Device</label>
-                            <select class="gold form-select" name="device">
+                            <select class="gold form-select" name="device[]">
                                 @foreach ($devices as $device)
-                                    <option value="{{ $device->id }}" {{ $onBoard->id == $device->id ? '' : 'selected' }}>{{ $device->partnumber }}</option>
+                                    <option value="{{ $device->id }}" {{ $onBoard->id == $device->id ? 'selected' : '' }}>{{ $device->partnumber }}</option>
                                 @endforeach
                             </select>
                             @error('device')
@@ -27,7 +27,7 @@
                     @else
                         <label for="device" class="form-label">Device</label>
                         <select class="form-select gold" name="device">
-                            <option disabled {{ isset($board) ? '' : 'selected' }} style="display:none">Make a choice</value>
+                            <option disabled selected style="display:none">Make a choice</value>
                             @foreach ($devices as $device)
                                 <option value="{{ $device->id }}">{{ $device->partnumber }}</option>
                             @endforeach
@@ -40,7 +40,7 @@
                     @endif       
 
                     <label for="type" class="form-label">Type</label>
-                    <select class="form-select gold" name="type">
+                    <select class="form-select gold" name="board_type_id">
                         @if (! isset($board))
                             <option disabled {{ isset($board) ? '' : 'selected' }} style="display:none">Make a choice</value>
                         @endif
@@ -79,6 +79,22 @@
                         @endforeach
                     </select>
                     @error('device')
+                        <div class=form-error>
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                    <label for="hardware" class="form-label">PCB Version</label>
+                    <input type="text" class="form-control gold" name="hardware" placeholder="1" value="{{isset($board) ? $board->hardware : ''}}">
+                    @error('hardware')
+                        <div class=form-error>
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                    <label for="software" class="form-label">Software Version</label>
+                    <input type="text" class="form-control gold" name="software" placeholder="1" value="{{isset($board) ? $board->software : ''}}">
+                    @error('sofrtware')
                         <div class=form-error>
                             {{ $message }}
                         </div>
