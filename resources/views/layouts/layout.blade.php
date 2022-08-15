@@ -15,4 +15,5 @@
     @yield('content')
 </body>
 <script type="text/javascript" src="{{ asset('js/theme.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/appendForm.js') }}"></script>
 </html>
