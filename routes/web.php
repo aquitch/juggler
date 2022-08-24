@@ -25,6 +25,10 @@ Route::get('/juggler', function () {
     return view('juggler.index');
 })->name('juggler');
 
+Route::get('/orders/manager', function () {
+    return view('orders.manager');
+})->name('manager');
+
 Route::resource('/devices', DeviceController::class);
 Route::resource('/libs', LibraryController::class);
 Route::resource('/boards', BoardController::class);

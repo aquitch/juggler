@@ -3,7 +3,6 @@
 @section('title', 'Devices :: Index')
 
 @section('content')
-@livewire('input')
 <div class="d-flex justify-content-center">
     <div class="card" id="main">
         <div class="card-header" style="background-image: linear-gradient(to right, rgba(0, 50, 150, 0.300), #32323b)">

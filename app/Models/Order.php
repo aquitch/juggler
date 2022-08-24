@@ -10,6 +10,10 @@ class Order extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'name',
+    ];
+
     public function devices()
     {
         return $this->morphToMany(Device::class, 'devicable', 'astra.devicables');

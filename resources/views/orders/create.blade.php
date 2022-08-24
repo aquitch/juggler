@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
-@section('title', 'Boards :: Create')
+@section('title', 'Orders :: Create')
 
 @section('content')
-@include('boards.form', ['method' => 'POST', 'action' => route('boards.store')])
+@include('orders.form', ['name' => 'orders', 'method' => 'POST', 'action' => route('orders.store')])
 @endsection

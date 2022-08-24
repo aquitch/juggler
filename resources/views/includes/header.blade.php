@@ -25,6 +25,9 @@
         <li class="nav-item">
           <a class="nav-link" style="color:#feae4e" href="{{ route('boards.index') }}">Тестовые решения</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#feae4e" href="{{ route('orders.index') }}">Заказы</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" style="color:#feae4e" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
