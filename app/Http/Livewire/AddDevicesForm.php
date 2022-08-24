@@ -24,6 +24,7 @@ class AddDevicesForm extends Component
     public function addDevice(Device $device)
     {        
         $this->selected->push($device);
+        $this->dispatchBrowserEvent('contentChanged');
     }
 
     public function removeDevice(Device $device)
@@ -31,6 +32,8 @@ class AddDevicesForm extends Component
         $this->selected = $this->selected->reject(function ($value, $key) use ($device) {
             return $value == $device;
         });
+        
+        $this->dispatchBrowserEvent('contentChanged');
     }
     
     public function render()

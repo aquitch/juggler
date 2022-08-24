@@ -23,7 +23,15 @@
               </div>
         </div>
         <div class="card-footer">
-            @dump($selected)
         </div>
     </div>
+    <script type="text/javascript">
+        window.addEventListener('contentChanged', e => {
+            if (localStorage.getItem('theme') == 'day') {
+            document.getElementById('main').classList.add('day');
+        } else {
+            document.getElementById('main').classList.add('night');
+        }
+        })
+      </script>
 </div>
