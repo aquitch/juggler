@@ -18,4 +18,15 @@
 </body>
 <script type="text/javascript" src="{{ asset('js/theme.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/appendForm.js') }}"></script>
+<script type="text/javascript">
+    window.addEventListener('contentChanged', e => {
+        if (localStorage.getItem('theme') == 'day') {
+        document.getElementById('main').classList.add('day');
+        document.getElementById('info').classList.add('day');
+    } else {
+        document.getElementById('main').classList.add('night');
+        document.getElementById('info').classList.add('night');
+    }
+    })
+  </script>
 </html>

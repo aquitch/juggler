@@ -8,7 +8,7 @@
         <div class="card-header grad">
             <div class="d-flex justify-content-between">
                 <h3>Заказы</h3>
-                <a href="{{ route('boards.create') }}" class="btn btn-primary">Добавить</a>
+                <a href="{{ route('orders.create') }}" class="btn btn-primary">Добавить</a>
             </div>
         </div>
         <div class="card-body">

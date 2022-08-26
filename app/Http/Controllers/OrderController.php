@@ -37,7 +37,11 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        Order::create($request->all());
+        $order = Order::create([
+            'name' => $request->name,
+        ]);
+
+        $order->devices()->attach($request->device);
 
         return redirect()->route('orders.index');
     }
@@ -61,7 +65,9 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('orders.edit');
+        $order->load('devices');
+        
+        return view('orders.edit', compact('order'));
     }
 
     /**
@@ -73,7 +79,11 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-       $order->update($request->all());
+        $order->update([
+            'name' => $request->name,
+        ]);
+
+        $order->devices()->sync($request->device);
 
        return redirect()->route('orders.index');
     }

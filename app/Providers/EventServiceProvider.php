@@ -8,6 +8,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Observers\BoardObserver;
 use App\Models\Board;
+use App\Observers\OrderObserver;
+use App\Models\Order;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -30,6 +32,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Board::observe(BoardObserver::class);
+        Order::observe(OrderObserver::class);
     }
 
     /**

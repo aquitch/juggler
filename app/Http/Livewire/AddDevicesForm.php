@@ -11,14 +11,20 @@ class AddDevicesForm extends Component
 {
     use WithPagination;
 
-    public $search = 'AD';
+    public $search;
     public $devices;
     public $selected;
-    public $observe;
+    public $order;
+    public $method;
+    public $action;
 
     public function mount()
     {
-        $this->selected = new Collection();
+        if (isset($this->order)) {
+            $this->selected = $this->order->devices;
+        } else {
+            $this->selected = new Collection();
+        }
     }
     
     public function addDevice(Device $device)
@@ -39,6 +45,8 @@ class AddDevicesForm extends Component
     public function render()
     {
         $this->devices = Device::where('partnumber', 'like', '%'.$this->search.'%')->whereNotIn('partnumber', $this->selected->pluck('partnumber'))->get();
+
+        $this->dispatchBrowserEvent('contentChanged');
 
         return view('livewire.add-devices-form');
     }

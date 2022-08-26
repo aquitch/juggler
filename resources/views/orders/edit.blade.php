@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
-@section('title', 'Boards :: Edit')
+@section('title', 'Orders :: Edit')
 
 @section('content')
-@include('boards.form', ['method' => 'PUT', 'action' => route('boards.update', $board)])
+@include('orders.form', ['method' => 'PUT', 'action' => route('orders.update', $order)])
 @endsection
