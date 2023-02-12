@@ -1,0 +1,42 @@
+:root{
+    --bs-night-theme: #1a1a1d;
+    --bs-day-theme: #77a5fc;
+}
+
+.night{
+    background-color: var(--bs-night-theme);
+}
+.day{
+    background-color: var(--bs-day-theme);
+}
+div.night{
+    background-color:#32323b;
+    color: white;
+}
+div.day{
+    background-color: blanchedalmond;
+    color: black;
+}
+input{
+    background-color:#32323b;
+    color:#feae4e;
+    border:none;
+    border-bottom: 2px solid rgb(0, 140, 255);
+}
+textarea:focus {
+  background: #e71818;
+}
+.self-center{
+    margin:auto;
+    text-align: center;
+}
+.gold{
+    background:#32323b;
+    color: #feae4e;
+    border: none;
+    border-bottom: 2px solid rgb(0, 140, 255, 0.300);
+    margin-bottom: 10px;
+}
+.grad{
+    background-image: linear-gradient(to right, rgba(0, 50, 150, 0.300), #32323b);
+}
