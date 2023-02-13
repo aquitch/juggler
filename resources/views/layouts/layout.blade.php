@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>@yield('title')</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <!-- Bootstrap 5.0 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -11,8 +12,20 @@
 <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
 <body>
-    @include('includes.header')
-    @yield('content')
+<div class="container-fluid">
+            @include('includes.header')       
+    <div class="row">
+        <div class="col">
+            @yield('col-right')
+        </div>
+        <div class="col-8">
+            @yield('content')
+        </div>
+        <div class="col">
+            @yield('col-left')
+        </div>
+    </div>
+</div>
 </body>
 <script type="text/javascript" src="{{ asset('js/theme.js') }}"></script>
 </html>
