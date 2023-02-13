@@ -52,6 +52,7 @@ class LibraryService
     public static function saveDatasheet(DeviceRequest $request)
     {
         Storage::disk('libs')->putFileAs('datasheets', $request->file('datasheet'), $request->datasheet->getClientOriginalName());
+        //dd(Storage::disk('libs'));
         return Storage::disk('libs')->url('/datasheets/' . $request->datasheet->getClientOriginalName());
     }
 
