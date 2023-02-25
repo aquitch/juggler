@@ -15,6 +15,9 @@
             {{ $board->schEng->name }}
             {{ $board->pcbEng->name}}
             {{ $board->type->name }}
+            @foreach ($board->devices as $device)
+                {{ $device->partnumber }}
+            @endforeach
         </div>
     </div>
 </div>

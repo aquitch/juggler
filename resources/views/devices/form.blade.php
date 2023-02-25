@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-    <div class="card col-4" id="main">
+    <div class="card col-6" id="main">
         <div class="card-header grad">
             <div class="d-flex justify-content-between">
                 <h3>{{ isset($device) ? $device->partnumber . ' Редактор' : 'Добавить тестовое решение' }}</h3>

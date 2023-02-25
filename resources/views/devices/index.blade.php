@@ -3,7 +3,7 @@
 @section('title', 'Devices :: Index')
 
 @section('content')
-<div class="d-flex justify-content-center">
+<div class="container-fluid justify-content-center">
     <div class="card" id="main">
         <div class="card-header" style="background-image: linear-gradient(to right, rgba(0, 50, 150, 0.300), #32323b)">
             <div class="d-flex justify-content-between">
@@ -20,7 +20,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Part Number</th>
                             <th scope="col">Manufacturer</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col"><center>Actions</center></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -34,7 +34,8 @@
                                     {{ $device->manufacturer }}
                                 </td>
                                 <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <center>
+                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         <form method="POST" action="{{ route('devices.destroy', $device) }}">
                                             @csrf
                                             @method('DELETE')
@@ -43,7 +44,8 @@
                                             <a href="{{ route('devices.show', $device->id) }}" class="btn btn-success">Просмотр</a>
                                             <a href="{{ $device->datasheet }}" class="btn btn-primary">Datasheet</a>
                                         </form>
-                                    </div>
+                                        </div>
+                                    </center>
                                 </td>
                             </tr>
                             @endforeach

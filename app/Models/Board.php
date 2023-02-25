@@ -34,7 +34,7 @@ class Board extends Model
 
     public function devices()
     {        
-        return $this->morphToMany(Device::class, 'devicable', 'astra.devicables');
+        return $this->morphToMany(Device::class, 'devicable', 'laravel.devicables');
     }
 
     public function schEng()

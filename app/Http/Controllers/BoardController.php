@@ -69,6 +69,7 @@ class BoardController extends Controller
      */
     public function show(Board $board)
     {
+        $board = $board->load('devices');
         return view('boards.show', compact('board'));
     }
 

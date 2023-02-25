@@ -3,7 +3,7 @@
 @section('title', 'Devices :: Index')
 
 @section('content')
-<div class="d-flex justify-content-center">
+<div class="container-fluid justify-content-center">
     <div class="card" id="main">
         <div class="card-header grad">
             <div class="d-flex justify-content-between">
